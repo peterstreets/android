@@ -35,6 +35,23 @@ De recovery flow is een essentieel onderdeel van de Okta setup:
 - Account herstel gaat via `salesforce/celestialreflection@okta` beheerder
 - Backup verificatie methode (TOTP/SMS) moet altijd ingesteld zijn als fallback
 
+> **Volledige noodkit & stap-voor-stap herstelgids: `docs/okta-recovery-guide.md`**
+
+### Risico's & Valkuilen (voorkom dit)
+| Risico | Ernst | Oplossing |
+|--------|-------|-----------|
+| FIDO2 key verloren | HOOG | Registreer altijd een 2e key + TOTP |
+| Backup-codes niet opgeslagen | HOOG | Sla op in wachtwoordmanager bij enrollment |
+| Slechts 1 FIDO2 key | HOOG | 2e key op andere fysieke locatie |
+| WSL2 gereset → token weg | MIDDEL | `cp -r ~/.claude/ ~/claude-backup/` |
+| Browser niet FIDO2-compatible | MIDDEL | Gebruik Chrome of Edge (niet Firefox) |
+| Okta token ≠ MEGA sessie | LAAG | Zijn aparte systemen, onafhankelijk van elkaar |
+
+### Token Locatie (Claude Code)
+- **WSL2**: `~/.claude/` — NIET zichtbaar in Windows Explorer
+- **Native Windows**: `C:\Users\<naam>\.claude\`
+- Token backup: `cp -r ~/.claude/ /mnt/c/Users/<naam>/claude-backup-$(date +%Y%m%d)/`
+
 ### Okta & Android Integratie (Toekomstig)
 De huidige MEGA auth stack (email/password + TOTP 2FA) is kandidaat voor vervanging/uitbreiding met Okta SSO:
 - Okta OIDC Android SDK kan worden geïntegreerd in `DefaultLoginRepository`
@@ -103,6 +120,8 @@ npm install -g @anthropic-ai/claude-code
 claude
 ```
 > Let op: native Windows werkt maar WSL2 geeft betere compatibiliteit met Android-tools (Gradle, ADB, etc.)
+
+> **Volledige installatiegids met probleemoplossing: `docs/claude-code-windows-setup.md`**
 
 ---
 
