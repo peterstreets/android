@@ -28,6 +28,18 @@
   2. **TOTP** — time-based one-time password als fallback 2FA
 - **Certificering**: Okta device certificate enrollment als onderdeel van de onboarding
 
+### Token/Credential Formaat
+Gesigneerde credentials volgen dit formaat:
+```
+FS {developer_id}:{public_key}:{base64_signed_string}
+```
+- `FS` — prefix (signed credential identifier)
+- `developer_id` — unieke identifier van de developer/eigenaar
+- `public_key` — publieke sleutel voor verificatie
+- `base64_signed_string` — base64-gecodeerde gesigneerde payload
+
+Dit formaat wordt gebruikt voor developer-authenticatie en kan geverifieerd worden door de public key te matchen tegen de Okta-geregistreerde credentials.
+
 ### Recovery Flow (KRITISCH)
 De recovery flow is een essentieel onderdeel van de Okta setup:
 - Als FIDO2 security key verloren gaat → recovery via Okta admin portal
