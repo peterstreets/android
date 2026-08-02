@@ -137,6 +137,45 @@ claude
 
 ---
 
+## Genspark AI — Rol in het Ecosysteem
+
+- **Tool**: Genspark AI (`genspark.ai`) — gebruikt voor uitlijnen, schemata, en agent-workflows
+- **Genspark Terminal**: wordt geïnstalleerd op Windows desktop (gepland) — lokale agent runner
+- **Bestanden**: Genspark exporteert naar `genspark.ai/api/files/s/<id>` — staan NIET lokaal in Notion
+- **Notion integratie**: 4 "Genspark Integration" pagina's aanwezig, meest recente child-pagina's zijn leeg
+- **Verband met Hermes**: Genspark terminal + Hermes (Cloudflare Worker) + fgm-memory (D1) vormen samen de agent-stack
+- **Caveka dossier**: Genspark heeft `Caveka_Payment_Structure.md` gegenereerd met salarisoverzicht en back-pay claim
+
+### Genspark Terminal Installatie (gepland)
+Na installatie op Windows koppelt de terminal aan de bestaande agent-stack:
+```
+Genspark Terminal (Windows)
+    ↕
+Hermes routing agent (Cloudflare Worker)
+    ↕
+fgm-memory D1 database (WEUR/Amsterdam)
+    ↕
+Notion / Claude Code context
+```
+
+---
+
+## Communicatie-ecosysteem
+
+Meerdere platforms, elk met eigen kanalen — Claude reageert soms op PC terwijl gesprek op telefoon begon:
+
+| Platform | Kanalen | Opmerking |
+|----------|---------|-----------|
+| Telefoon (SIM) | Bellen, SMS | Primair — maar helft gemist als niet bij telefoon |
+| WhatsApp | Telefoon + Desktop | 2 kanalen, gesprekken syncen |
+| Telegram | Telefoon + Desktop | 2 kanalen, beter voor automation/bots |
+| Windows PC | Bluetooth / schermverlenging van telefoon | Berichten via PC zonder apart oproepen |
+| Claude Code | Desktop (WSL2) | Reageert op PC-sessie, niet op telefoon-sessie |
+
+**Risico**: reacties op verkeerd platform → Claude ziet bericht niet, of reageert te laat.
+
+---
+
 ## Ontwikkelomgeving
 
 - **IDE**: Android Studio (aanbevolen)
