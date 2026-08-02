@@ -223,13 +223,28 @@ APART HOUDEN (Privacy — NIET samenvoegen):
 | Adres | Functie | Status |
 |-------|---------|--------|
 | `djthamo@gmail.com` | **PRIMAIR** — consolideer hier naartoe | Actief |
-| `celestialreflection@outlook.com` | Microsoft/Okta SSO, GitHub, Azure DevOps, NordPass | Forward → primair |
+| `djpeterstreets@gmail.com` | Persoonlijk — nooit zakelijk gebruikt | Persoonlijk |
+| `djpeterstreets@hotmail.com` | Variant van persoonlijk adres | Persoonlijk |
+| `djpeterstreets@outlook.com` | Variant van persoonlijk adres | Persoonlijk |
+| `celestialreflection@outlook.com` | Microsoft/Okta SSO, Azure DevOps, NordPass | Forward → primair |
 | `celestialreflection@hotmail.com` | OneDrive / Revolut | Forward → primair |
-| `info@celestialreflection.com` | Agent-created business, domein ACTIEF | Forward → primair |
+| `info@celestialreflection.com` | Enige echte zakelijke e-mail (website), maar nooit volledig opgezet | Forward → primair |
 | `easio@proton.me` | Privacy/Proton — CanaryMail Lifetime Access | Apart houden |
 | `fgmvanstraaten@yandex.ru` | Russische infra / Yandex Disk backup | Apart houden |
 | `pvanstraaten@vk.com` | VKontakte (Russisch social network) | Apart houden |
 | `wachtwoordyd1@yandex.ru` | Yandex browser sync op laptop | Apart houden |
+| `peterstreets@live.nl` | Onbekende herkomst — niet bevestigd of gekoppeld | Onderzoeken |
+
+### GitHub & SSH
+- **GitHub gebruikersnaam**: `PeterStreets` (geen e-mail, alleen username)
+- **SSH sleutel**: RSA 4096-bit aangemaakt met comment `celestialreflection@outlook.com`
+- **Salesforce instantie**: `velocity-customer-4341.my.salesforce.com`
+
+### Keybase
+- Account met `djpeterstreets@proton.me` verscheen in configuratie ~2024
+- Nooit bewust aangemaakt door gebruiker
+- Functie: waarschijnlijk backup/recovery voor wallet of wachtwoordmanager
+- Niet kritiek maar wel relevant als hersteloptie
 
 ### Mozilla Relay (Master Index — NIET wijzigen)
 | Relay adres | Gekoppeld aan |
