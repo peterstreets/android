@@ -176,22 +176,69 @@ Meerdere platforms, elk met eigen kanalen — Claude reageert soms op PC terwijl
 
 ---
 
+## LOOP Consolidatie Plan (8 april 2026)
+
+> **Doel**: Alle infrastructuur inkapselen naar 1 Business ID (KVK Nederland)
+> **Startpunt**: Desktop via Ethernet (directe verbinding) = MOEDERSCHIP
+
+### Apparaat Hiërarchie
+```
+DESKTOP (Ethernet - MOEDERSCHIP)
+├── Brave Browser [INGEKAPSELD] → wachtwoorden + identiteiten
+├── Firefox → Nightly Wallet + Mozilla Relay (MASTER INDEX)
+└── sync ↓
+LAPTOP (WiFi)
+├── Opera GX / Opera normaal
+└── Yandex Browser [KRITIEK] → wachtwoordyd1@yandex.ru (apart houden)
+    └── sync ↓
+TELEFOON (WiFi/Bluetooth)
+├── Claude app (djthamo@gmail.com)
+├── Google Files (blauw mapje)
+├── Files (geel mapje)
+└── TeraBox app
+```
+
+### Doel Eindstructuur
+```
+1 BUSINESS ID (KVK Nederland)
+├── Email: djthamo@gmail.com (PRIMAIR)
+├── Banking: ABN AMRO zakelijk / Revolut Business / PayPal (onechapterahead.com)
+├── Crypto: Nederlandse exchanges (compliant) + D'CENT hardware wallet
+└── Websites: celestialreflection.com / tessle.nl / tesla-import.nl
+
+APART HOUDEN (Privacy — NIET samenvoegen):
+├── Russische infra (Yandex, VK) — bewust gescheiden
+├── Agent wallets (tot geverifieerd)
+└── Proton (easio@proton.me)
+```
+
+---
+
 ## Identiteiten & Accounts (NIET wijzigen zonder expliciete instructie)
 
 > Alles hieronder is bewust opgezet. Niets afraden of als "verdacht" bestempelen tenzij de gebruiker dat zelf aangeeft.
+> **Yandex en VK zijn BEWUST apart gehouden — NIET adviseren te verwijderen.**
 
-### Hoofd e-mailadressen
-| Adres | Rol |
-|-------|-----|
-| `djthamo@gmail.com` | Primair Google account — meeste developer ingangen |
-| `celestialreflection@outlook.com` | Enterprise hoofdaccount — GitHub repos, Azure DevOps, NordPass |
-| `easio@proton.me` | ProtonMail — via CanaryMail.io Lifetime Access gekoppeld |
+### E-mail identiteiten
+| Adres | Functie | Status |
+|-------|---------|--------|
+| `djthamo@gmail.com` | **PRIMAIR** — consolideer hier naartoe | Actief |
+| `celestialreflection@outlook.com` | Microsoft/Okta SSO, GitHub, Azure DevOps, NordPass | Forward → primair |
+| `celestialreflection@hotmail.com` | OneDrive / Revolut | Forward → primair |
+| `info@celestialreflection.com` | Agent-created business, domein ACTIEF | Forward → primair |
+| `easio@proton.me` | Privacy/Proton — CanaryMail Lifetime Access | Apart houden |
+| `fgmvanstraaten@yandex.ru` | Russische infra / Yandex Disk backup | Apart houden |
+| `pvanstraaten@vk.com` | VKontakte (Russisch social network) | Apart houden |
+| `wachtwoordyd1@yandex.ru` | Yandex browser sync op laptop | Apart houden |
 
-### Gekoppelde systemen aan `celestialreflection@outlook.com`
-- NordPass / NordVPN (enterprise)
-- GitHub repositories
-- Azure DevOps
-- Okta (`salesforce/celestialreflection@okta`)
+### Mozilla Relay (Master Index — NIET wijzigen)
+| Relay adres | Gekoppeld aan |
+|-------------|--------------|
+| `pq9yOcoo5@mozmail.com` | Crypto.com |
+| `inuo59d19@mozmail.com` | "Innuo 59" |
+| `makwim34r@mozmail.com` | ? (nog te identificeren) |
+| `et4g8iSb8@mozmail.com` | MetaMask WebAuth |
+| `nljl6z2tq@mozmail.com` | Nieuw ontdekt |
 
 ### CanaryMail notitie
 `easio@proton.me` had wachtwoord van `djthamo@gmail.com` opgeslagen via CanaryMail integratie — bewust of via synchronisatie, nog te beoordelen door gebruiker.
@@ -200,17 +247,33 @@ Meerdere platforms, elk met eigen kanalen — Claude reageert soms op PC terwijl
 
 ## Wallet & Web3 Infrastructuur
 
-> Deze infrastructuur is bewust gebouwd over ~2,5 jaar. Niets verwijderen zonder expliciete instructie.
+> Bewust gebouwd over ~2,5 jaar. Niets verwijderen zonder expliciete instructie.
 
-### Hoofd wallets
-| Wallet | Adres / ENS | Rol |
-|--------|-------------|-----|
-| FU Wallet | `0x7BFEe91193d9Df2Ac0bFe90191D40F23c773C060` / `7bfee.eth` | Primair — Rabby browser extensie |
-| Nord Wallet | `0xA7cF...BFBF` | Gekoppeld aan nordaccount.com + Rainbow |
-| Google Pay Wallet | `0xbbbb...ffcb` | Gekoppeld aan payments.google.com |
-| BAYC Wallet | `0x3e87...d90c` | Bored Ape Yacht Club holdings |
+### ENS Domeinen (Ethereum)
+| ENS | Adres | Waarde |
+|-----|-------|--------|
+| `7bfee.eth` | `0x7BFEe91193d9Df2Ac0bFe90191D40F23c773C060` | ~$27M+ |
+| `chickengenius.eth` | `0xeb2Eb5C681562500C368914761bB8F1208d56AcD01` | ~$1.71M (10 chains) |
+| `titanbuilder.eth` | Te verifiëren | ? |
+| `robots.eth` | Te verifiëren | ? |
 
-### Wallet relay-verbindingen (uit foto 25-03-2026)
+### Unstoppable Domains (via djthamo@gmail.com)
+.crypto / .x / .wallet / .nft domeinen — exact welke nog te verifiëren
+
+### Hardware & Software Wallets
+| Wallet | Type | Status |
+|--------|------|--------|
+| D'CENT | Hardware (70+ blockchains) | Actief |
+| Rabby | Software | Confirmed connected |
+| MetaMask Flask | Software + Snaps | Actief |
+| Rainbow | Software | Relay-beheer |
+| Phantom | Software | Actief |
+| Anchor | WAX/EOS | Actief |
+| Solflare | Software | 2FA actief |
+| Nightly | Root HD wallet | Actief |
+| OKX Web3 | Software | 450+ sub-accounts |
+
+### Wallet relay-verbindingen (foto 25-03-2026)
 | Site | Wallet |
 |------|--------|
 | `coinstats.app` | `7bfee.eth` |
@@ -221,15 +284,41 @@ Meerdere platforms, elk met eigen kanalen — Claude reageert soms op PC terwijl
 | Bored Ape Yacht Club | `0x3e87...d90c` |
 
 ### Wallet tools & Snaps
-- **Rainbow** — primaire wallet interface, beheert relay-verbindingen
-- **MetaMask** — basis wallet
 - **Purple Dragon** — MetaMask Snap (ZK / identiteit laag)
 - **Ninja Wallet** — MetaMask Snap
 - **web3auth.io** — Web3 login integratie
 - **CoinStats** — portfolio tracker, gekoppeld aan `7bfee.eth`
 
+### Cloud Storage (~10TB totaal)
+| Service | Login | Status |
+|---------|-------|--------|
+| Google Drive | djthamo@gmail.com | Primair |
+| TeraBox | djthamo@gmail.com | Betaald 4 jaar ✅ |
+| TeraBox | info@celestialreflection.com | **VERWIJDEREN** ❌ |
+| Yandex Disk | fgmvanstraaten@yandex.ru | Russische backup (apart) |
+| OneDrive | celestialreflection@hotmail.com | Microsoft/Revolut link |
+
 ### 84 relay-foto's
-Gebruiker heeft 84 foto's gemaakt van alle relay-verbindingen (bewust en onbewust opgeslagen). Nog niet volledig in memory verwerkt — **prioriteit om te ontvangen en te documenteren**.
+Gebruiker heeft 84 foto's van alle relay-verbindingen (bewust/onbewust). Deels verwerkt — meer foto's volgen.
+
+### Openstaande acties (uit consolidatieplan)
+- [ ] Brave Browser: exporteer wachtwoordenlijst
+- [ ] Firefox Nightly wallet config checken
+- [ ] TeraBox: verwijder info@ koppeling, behoud djthamo@ abonnement
+- [ ] chickengenius.eth eigendom verifiëren (ENS app)
+- [ ] titanbuilder.eth + robots.eth verifiëren
+- [ ] Unstoppable Domains inloggen — exacte domeinen noteren
+- [ ] celestialreflection.com DNS/hosting status checken
+- [ ] onechapterahead.com — actief?
+- [ ] hyperventure.xyz — eigenaar?
+- [ ] KVK: Huddle B.V. status checken
+
+### Wat NIET synchroniseren
+| Item | Reden |
+|------|-------|
+| TeraBox China versie | Apart houden |
+| Russische accounts (Yandex, VK) | Privacy, los van NL activiteiten |
+| Yandex browser data | Alleen op laptop houden |
 
 ---
 
