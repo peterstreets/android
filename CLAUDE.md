@@ -176,6 +176,63 @@ Meerdere platforms, elk met eigen kanalen — Claude reageert soms op PC terwijl
 
 ---
 
+## Identiteiten & Accounts (NIET wijzigen zonder expliciete instructie)
+
+> Alles hieronder is bewust opgezet. Niets afraden of als "verdacht" bestempelen tenzij de gebruiker dat zelf aangeeft.
+
+### Hoofd e-mailadressen
+| Adres | Rol |
+|-------|-----|
+| `djthamo@gmail.com` | Primair Google account — meeste developer ingangen |
+| `celestialreflection@outlook.com` | Enterprise hoofdaccount — GitHub repos, Azure DevOps, NordPass |
+| `easio@proton.me` | ProtonMail — via CanaryMail.io Lifetime Access gekoppeld |
+
+### Gekoppelde systemen aan `celestialreflection@outlook.com`
+- NordPass / NordVPN (enterprise)
+- GitHub repositories
+- Azure DevOps
+- Okta (`salesforce/celestialreflection@okta`)
+
+### CanaryMail notitie
+`easio@proton.me` had wachtwoord van `djthamo@gmail.com` opgeslagen via CanaryMail integratie — bewust of via synchronisatie, nog te beoordelen door gebruiker.
+
+---
+
+## Wallet & Web3 Infrastructuur
+
+> Deze infrastructuur is bewust gebouwd over ~2,5 jaar. Niets verwijderen zonder expliciete instructie.
+
+### Hoofd wallets
+| Wallet | Adres / ENS | Rol |
+|--------|-------------|-----|
+| FU Wallet | `0x7BFEe91193d9Df2Ac0bFe90191D40F23c773C060` / `7bfee.eth` | Primair — Rabby browser extensie |
+| Nord Wallet | `0xA7cF...BFBF` | Gekoppeld aan nordaccount.com + Rainbow |
+| Google Pay Wallet | `0xbbbb...ffcb` | Gekoppeld aan payments.google.com |
+| BAYC Wallet | `0x3e87...d90c` | Bored Ape Yacht Club holdings |
+
+### Wallet relay-verbindingen (uit foto 25-03-2026)
+| Site | Wallet |
+|------|--------|
+| `coinstats.app` | `7bfee.eth` |
+| `hyperevmscan.io` | `7bfee.eth` |
+| `nordaccount.com` | `0xA7cF...BFBF` |
+| `payments.google.com` | `0xbbbb...ffcb` |
+| `rainbowdotme.typeform.com` | `0xA7cF...BFBF` |
+| Bored Ape Yacht Club | `0x3e87...d90c` |
+
+### Wallet tools & Snaps
+- **Rainbow** — primaire wallet interface, beheert relay-verbindingen
+- **MetaMask** — basis wallet
+- **Purple Dragon** — MetaMask Snap (ZK / identiteit laag)
+- **Ninja Wallet** — MetaMask Snap
+- **web3auth.io** — Web3 login integratie
+- **CoinStats** — portfolio tracker, gekoppeld aan `7bfee.eth`
+
+### 84 relay-foto's
+Gebruiker heeft 84 foto's gemaakt van alle relay-verbindingen (bewust en onbewust opgeslagen). Nog niet volledig in memory verwerkt — **prioriteit om te ontvangen en te documenteren**.
+
+---
+
 ## Ontwikkelomgeving
 
 - **IDE**: Android Studio (aanbevolen)
