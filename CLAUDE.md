@@ -1,6 +1,84 @@
-# CLAUDE.md — Project Memory
+# CLAUDE.md
 
-## Project Overview
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+---
+
+## Build Commands
+
+```bash
+# Debug build
+./gradlew app:assembleGmsDebug --no-daemon
+
+# QA build
+./gradlew app:assembleGmsQa --no-daemon
+
+# Release build
+./gradlew app:assembleGmsRelease --no-daemon
+
+# Clean
+./gradlew clean
+```
+
+Requires env vars: `ARTIFACTORY_BASE_URL`, `ARTIFACTORY_USER`, `ARTIFACTORY_ACCESS_TOKEN` (private Maven repos), `NDK_ROOT`, `ANDROID_HOME`, `JAVA_HOME` (JDK 21).
+
+## Running Tests
+
+```bash
+# All unit tests with coverage (same as CI/CD)
+./gradlew --no-daemon runAllUnitTestsWithCoverage
+
+# Single module (Android library)
+./gradlew :<module>:testDebugUnitTestCoverage --no-daemon
+
+# Single module (app)
+./gradlew :app:createUnitTestCoverageReport --no-daemon
+
+# Single module (JVM)
+./gradlew :<module>:jacocoTestReport --no-daemon
+```
+
+CI is Jenkins-based (`jenkinsfile/` directory) — no `.github/workflows/`.
+
+## Lint
+
+```bash
+./gradlew --no-daemon lint
+```
+
+Android Lint only (no ktlint/detekt). Custom lint checks live in `:lint`. `custom_lint.xml` at root suppresses specific issues. `abortOnError = false`; XML report at `build/reports/lint-results.xml`.
+
+## Module Structure
+
+| Module | Role |
+|--------|------|
+| `:app` | Application module |
+| `:domain` | Pure Kotlin — UseCases, Repository interfaces, entities |
+| `:data` | Repository implementations, Gateways, Mappers |
+| `:navigation` | Navigation graph |
+| `:sdk` | MEGA native SDK JNI wrapper |
+| `:core/*` | Shared: analytics, feature-flags, formatter, transfers, ui-components |
+| `:feature/*` | Feature modules: chat, cloud-drive, devicecenter, home, myaccount, photos, payment, sync, transfers |
+| `:shared/*` | Shared UI: original-core-ui, resources, sync |
+| `:legacy-core-ui` | Legacy UI components |
+| `:lint` | Custom lint rules |
+| `:core-test` / `:core-ui-test` | Shared test utilities |
+
+Build files follow `<module>/<module>.gradle.kts` naming (not the default `build.gradle.kts`).
+
+## Architecture
+
+**Clean Architecture + MVVM + Use Cases + Repository pattern**, with Hilt DI and Coroutines/Flow.
+
+- **UseCases** (`:domain`): plain Kotlin classes, `@Inject constructor`, single `suspend operator fun invoke()` or Flow-returning `invoke()`. Depend only on Repository interfaces.
+- **Repositories**: interfaces in `:domain`, implementations (`DefaultXxxRepository`) in `:data`. Data layer uses **Gateways** (`MegaApiGateway`, `MegaChatApiGateway`) to abstract SDK calls and **Mappers** to convert SDK types to domain entities.
+- **ViewModels** (`:app`/feature modules): consume UseCases, expose `StateFlow`/`SharedFlow` to Compose UI.
+
+App version `15.26.1` | compileSdk/targetSdk `36` | minSdk `28` | JDK `21`.
+
+---
+
+## Project Overview (Personal Memory)
 
 **MEGA Android** — Encrypted cloud storage Android application.
 
